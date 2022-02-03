@@ -1,3 +1,8 @@
+var gamePattern = [];
+var buttonColours = ["red", "blue", "green", "yellow"];
+var userClickedPattern = [];
+var started = false;
+var level = 1;
 
 /*Start Over the game*/
 function startOver() {
