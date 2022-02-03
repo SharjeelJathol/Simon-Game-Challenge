@@ -31,6 +31,35 @@ function randomColour() {
     playSound(randomChosenColour);
 }
 
+/*Player input from the console*/
+for (var i = 0; i < document.querySelectorAll(".btn").length; i++) {
+    document.querySelectorAll(".btn")[i].addEventListener("click", function () {
+        if (started) {
+            playSound(this.getAttribute("id"));
+            animatePress(this.getAttribute("id"));
+            $("#" + this.getAttribute("id")).fadeOut(100).fadeIn(100);
+            userClickedPattern.push(this.getAttribute("id"));
+            for (var i = 0; i < userClickedPattern.length && (userClickedPattern.length <= gamePattern.length); i++) {
+                if (userClickedPattern[i] === gamePattern[i]) {} 
+                else {
+                    startOver();
+                    break;
+                }
+                if (gamePattern.length === userClickedPattern.length) {
+                    userClickedPattern = [];
+                    setTimeout(function(){
+                        randomColour();
+                    }, 1000);
+                    level++;
+                    document.querySelector("h1").textContent = "Level " + level;
+                }
+            }
+        }
+
+
+    });
+}
+
 /*For key pressed at the beginning*/
 $(document).on("keypress", function () {
     if (!started) {
