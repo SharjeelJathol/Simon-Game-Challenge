@@ -1,4 +1,19 @@
 
+/*Start Over the game*/
+function startOver() {
+    var audio = new Audio("sounds/wrong.mp3");
+    audio.play();
+    $("body").addClass("game-over");
+    setTimeout(function(){
+        $("body").removeClass("game-over");
+    }, 200);
+    userClickedPattern = [];
+    gamePattern = [];
+    started = false;
+    level = 1;
+    document.querySelector("h1").textContent = "Press A Key to Start";
+}
+
 /*TO generate a random color for the sequence*/
 function nextSequence() {
     return Math.floor(Math.random() * 4);
