@@ -1,4 +1,15 @@
 
+/*For key pressed at the beginning*/
+$(document).on("keypress", function () {
+    if (!started) {
+        started=true;
+        document.querySelector("h1").textContent = "Level " + level;
+        setTimeout(function(){
+            randomColour();
+        }, 1000);
+    }  
+});
+
 /*To play the respective sound*/
 function playSound(name) {
     var audio = new Audio("sounds/" + name + ".mp3");
